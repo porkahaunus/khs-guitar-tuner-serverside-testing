@@ -61,6 +61,17 @@ class AddView extends React.Component {
         //send tuning name and notes to somewhere to create a new tuning  
         alert("You submitted a tuning of " + this.state.list + " named " + this.state.description);
         this.setState({ description: '', notes: '', saveDismiss: true, errorMessageD: '', errorMessageN: '' });
+        const formData = new FormData();
+        alert("You submitted a tuning of " + this.state.list + " named " + this.state.description);
+        this.setState({ description: '', notes: '', saveDismiss: true, errorMessageD: '', errorMessageN: '' });
+        formData.append('id', this.state.count);
+        formData.append('description', this.state.description);
+        formData.append('notes', this.state.notes);
+        return fetch('http://localhost:8765/tunings', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
     }
     render() {
         return (
